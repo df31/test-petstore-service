@@ -1,0 +1,8 @@
+io\swagger\petstore\ta\PetstoreApiTest.class
+io\swagger\petstore\ta\step\Step.class
+io\swagger\petstore\ta\util\ScenarioState$DataEnvelope.class
+io\swagger\petstore\ta\step\FindPetStep.class
+io\swagger\petstore\ta\util\ScenarioState$DataEnvelope$DataEnvelopeBuilder.class
+io\swagger\petstore\ta\util\TestUtil.class
+io\swagger\petstore\ta\step\AddPetStep.class
+io\swagger\petstore\ta\util\ScenarioState.class
