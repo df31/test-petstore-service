@@ -2,11 +2,12 @@ package io.swagger.petstore.ta.util;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+import io.swagger.petstore.ta.model.PetStatus;
+import io.swagger.petstore.ta.model.PetTypes;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import lombok.experimental.UtilityClass;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,8 @@ public class TestUtil {
                 .when()
                 .log().all()
                 .post()
-                .then();
+                .then()
+                .log().all();
     }
 
     public static ValidatableResponse findPetByIdRequest(String petStoreUrl, String petId) {
@@ -42,15 +44,11 @@ public class TestUtil {
                 .when()
                 .log().all()
                 .get("/" + petId)
-                .then();
+                .then()
+                .log().all();
     }
 
-    public static JSONObject createPetInfo(int petId,
-                                           String petName,
-                                           int categoryId,
-                                           String categoryName,
-                                           List<String> photoUrls,
-                                           HashMap<Integer,String> tagMap) {
+    public static JSONObject createPetInfo(PetTypes pet) {
 
         JSONObject petContext = new JSONObject();
         JSONObject categoryContext = new JSONObject();
@@ -58,10 +56,10 @@ public class TestUtil {
         JSONArray tagsContext = new JSONArray();
         JSONArray photoUrlsContext = new JSONArray();
 
-        categoryContext.put("id", categoryId);
-        categoryContext.put("name", categoryName);
+        categoryContext.put("id", pet.getPetCategoryId());
+        categoryContext.put("name", pet.getPetCategoryName());
 
-        Map<Integer,String> tags = tagMap;
+        Map<Integer,String> tags = pet.getTags();
         for (Map.Entry<Integer,String> entry : tags.entrySet()){
             JSONObject tagContext = new JSONObject();
             tagContext.put("id", entry.getKey());
@@ -69,16 +67,16 @@ public class TestUtil {
             tagsContext.appendElement(tagContext);
         }
 
-        for (String photoUrl : photoUrls) {
+        for (String photoUrl : pet.getPhotoUrls()) {
             photoUrlsContext.appendElement(photoUrl);
         }
 
-        petContext.put("id", petId);
+        petContext.put("id", pet.getPetId());
         petContext.put("category", categoryContext);
-        petContext.put("name", petName);
+        petContext.put("name", pet.getPetName());
         petContext.put("photoUrls", photoUrlsContext);
         petContext.put("tags", tagsContext);
-        petContext.put("status", Status.available);
+        petContext.put("status", pet.getPetStatus());
 
         return petContext;
     }
