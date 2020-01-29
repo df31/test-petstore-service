@@ -37,9 +37,11 @@ Feature: Validating petstore service
     When User add a new <pet>
     Then User get error response with <error_code> and <error_message>
     Examples:
-      | pet                | error_code | error_message          |
-      | PET_HAS_INVALID_ID | 500        | something bad happened |
-
+      | pet                           | error_code | error_message          |
+      | PET_HAS_LONG_ID               | 500        | something bad happened |
+      | PET_HAS_ALPHABET_ID           | 500        | something bad happened |
+      | PET_CATEGORY_TAG_ID_IS_STRING | 500        | something bad happened |
+      | PET_TAG_ID_IS_STRING          | 500        | something bad happened |
 
   @negative
   Scenario Outline: Search a non-existing pet by id

@@ -14,7 +14,10 @@ public enum PetTypes {
     DOG("201", "Seven", "1", "Dog", Arrays.asList("photo_in_twitter", "photo_in_facebook", "photo_in_google_drive"), Arrays.asList(TAG_1), PetStatus.available),
     CAT("101", "MiMi", "2", "Cat", Arrays.asList("facbook_pjhoto_url", "tencent_space_url"), Arrays.asList(TAG_1,TAG_2), PetStatus.pending),
     FISH("301", "Discus", "3", "Fish", Arrays.asList("twitter_photo_link", "OneDrive_picture_link", "photo_link_in_cloud", "other_pic_link"), Arrays.asList(TAG_1,TAG_2,TAG_3), PetStatus.sold),
-    PET_HAS_INVALID_ID("1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", "Red Terqus", "3", "Fish", Arrays.asList("twitter_photo_link", "OneDrive_picture_link", "photo_link_in_cloud", "other_pic_link"), Arrays.asList(TAG_3), PetStatus.sold);
+    PET_HAS_LONG_ID("1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", "Red Terqus", "3", "Fish", Arrays.asList("twitter_photo_link", "OneDrive_picture_link", "photo_link_in_cloud", "other_pic_link"), Arrays.asList(TAG_3), PetStatus.sold),
+    PET_HAS_ALPHABET_ID("abc","hund","1","Dog",Arrays.asList("picture_link"),Arrays.asList(TAG_1),PetStatus.pending),
+    PET_CATEGORY_TAG_ID_IS_STRING("1","hund","abc","Dog",Arrays.asList("picture_link"),Arrays.asList(TAG_1),PetStatus.pending),
+    PET_TAG_ID_IS_STRING("1","hund","1","Dog",Arrays.asList("picture_link"),Arrays.asList(TAG_4),PetStatus.pending);
 
     private final String petId;
     private final String petName;
