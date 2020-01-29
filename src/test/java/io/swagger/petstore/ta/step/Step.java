@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public interface Step extends En {
     String PET_STORE_URL = "https://petstore.swagger.io/v2/pet";
-    String ADD_PET_ENDPOINT = "pet";
 
     default <T> T extract(String jsonKey, ValidatableResponse response) {
         T t = response.extract().jsonPath().get(jsonKey);

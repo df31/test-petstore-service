@@ -2,15 +2,11 @@ package io.swagger.petstore.ta.util;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
-import io.swagger.petstore.ta.model.PetStatus;
 import io.swagger.petstore.ta.model.PetTypes;
+import io.swagger.petstore.ta.model.Tag;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import lombok.experimental.UtilityClass;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -59,11 +55,10 @@ public class TestUtil {
         categoryContext.put("id", pet.getPetCategoryId());
         categoryContext.put("name", pet.getPetCategoryName());
 
-        Map<Integer,String> tags = pet.getTags();
-        for (Map.Entry<Integer,String> entry : tags.entrySet()){
+        for (Tag tag : pet.getTags()) {
             JSONObject tagContext = new JSONObject();
-            tagContext.put("id", entry.getKey());
-            tagContext.put("name",entry.getValue());
+            tagContext.put("id", tag.getTagId());
+            tagContext.put("name", tag.getTagName());
             tagsContext.appendElement(tagContext);
         }
 

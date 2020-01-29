@@ -48,7 +48,7 @@ Feature: Validating petstore service
     Then User get error response with <error_code> and <error_message>
     Examples:
       | id                                                                          | error_code | error_message                                      |
-      | 4                                                                           | 404        | Pet not found                                      |
+      | 1000                                                                        | 404        | Pet not found                                      |
       | 100000000000000000000000000000000000000000000000000000000000000000000000000 | 404        | ava.lang.NumberFormatException: For input string:  |
       | abc                                                                         | 404        | java.lang.NumberFormatException: For input string: |
       | *                                                                           | 404        | java.lang.NumberFormatException: For input string: |
